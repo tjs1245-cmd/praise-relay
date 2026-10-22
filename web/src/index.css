@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial Rounded MT Bold', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  color: #2b2926;
+  background: #fffcf8;
+  line-height: 1.65;
+}

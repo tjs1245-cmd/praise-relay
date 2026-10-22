@@ -9,10 +9,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 MAX_BODY = 8 * 1024
-CONTENT_TYPES = {
-    ".html": "text/html; charset=utf-8",
-    ".css": "text/css; charset=utf-8",
-    ".js": "text/javascript; charset=utf-8",
+# 내보내는 주소는 이 셋뿐이에요. 그 밖의 파일(app.py, data 등)은 404예요.
+STATIC_ROUTES = {
+    "/": ("index.html", "text/html; charset=utf-8"),
+    "/style.css": ("style.css", "text/css; charset=utf-8"),
+    "/app.js": ("app.js", "text/javascript; charset=utf-8"),
 }
 
 DB_PATH = os.path.join(BASE_DIR, "data", "entries.db")
@@ -100,10 +101,8 @@ class Handler(BaseHTTPRequestHandler):
         path = self.route()
         if path == "/api/entries":
             return self.list_entries()
-        if path == "/":
-            return self.send_static("index.html")
-        if path.startswith("/static/"):
-            return self.send_static(path[len("/static/"):])
+        if path in STATIC_ROUTES:
+            return self.send_static(*STATIC_ROUTES[path])
         self.send_error_json(404, "없는 주소예요.")
 
     def do_POST(self):
@@ -121,11 +120,9 @@ class Handler(BaseHTTPRequestHandler):
 
     do_PUT = do_DELETE = do_PATCH = method_not_allowed
 
-    def send_static(self, name):
-        full = os.path.realpath(os.path.join(STATIC_DIR, name))
-        inside = full.startswith(os.path.realpath(STATIC_DIR) + os.sep)
-        content_type = CONTENT_TYPES.get(os.path.splitext(full)[1])
-        if not inside or content_type is None or not os.path.isfile(full):
+    def send_static(self, name, content_type):
+        full = os.path.join(STATIC_DIR, name)
+        if not os.path.isfile(full):
             return self.send_error_json(404, "없는 주소예요.")
         with open(full, "rb") as f:
             self.send_bytes(200, f.read(), content_type)
