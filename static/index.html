@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>칭찬 릴레이</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <small>PRAISE RELAY</small>
+      <h1>칭찬 릴레이</h1>
+      <p>동료에게 고마운 마음을 한마디 남겨 보세요. 팀 모두가 함께 봐요.</p>
+    </header>
+
+    <form id="form" novalidate>
+      <label for="name">작성자</label>
+      <input id="name" maxlength="40" autocomplete="off" placeholder="내 이름">
+
+      <label for="to">받는 사람 <span class="optional">(선택)</span></label>
+      <input id="to" maxlength="40" autocomplete="off" placeholder="누구를 칭찬하나요?">
+
+      <label for="message">칭찬 한마디</label>
+      <textarea id="message" rows="4" maxlength="500" placeholder="어떤 점이 고마웠나요?"></textarea>
+
+      <p id="error" class="error" role="alert" hidden></p>
+      <button id="submit" type="submit">칭찬 남기기</button>
+    </form>
+
+    <section>
+      <h2>칭찬 모음</h2>
+      <p id="empty" class="empty" hidden>아직 칭찬이 없어요. 첫 칭찬을 남겨 보세요!</p>
+      <ul id="list"></ul>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

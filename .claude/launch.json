@@ -6,6 +6,12 @@
       "runtimeExecutable": "cmd",
       "runtimeArgs": ["/c", "api\\gradlew.bat", "-p", "api", "bootRun"],
       "port": 8080
+    },
+    {
+      "name": "py",
+      "runtimeExecutable": "C:\\Users\\DBInc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "runtimeArgs": ["app.py", "--port", "8000"],
+      "port": 8000
     }
   ]
 }
