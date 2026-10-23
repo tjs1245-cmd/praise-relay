@@ -24,6 +24,11 @@ python app.py
 ```
 http://127.0.0.1:8090 을 열어요. 터미널에 `MariaDB 연결 OK`가 보이면 성공이에요.
 
+## Vercel + Neon(Postgres) 배포
+- `DATABASE_URL`(또는 `POSTGRES_URL`) 환경변수가 있으면 Neon Postgres를, 없으면 로컬 MariaDB를 써요.
+- 테이블(`diary_entries`)은 첫 요청 때 자동으로 만들어져요.
+- Vercel 프로젝트(Root Directory `emotion-diary`)의 Storage 탭에서 Neon을 연결하면 `DATABASE_URL`이 자동으로 들어가요.
+
 ## API
 - GET /api/config
 - GET /api/entries?user=user1&year=2026
