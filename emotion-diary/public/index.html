@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>감정 일기장</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1>🌈 감정 일기장</h1>
+  <div class="tabs" id="who"></div>
+
+  <nav class="views">
+    <button data-view="today" class="on">오늘 쓰기</button>
+    <button data-view="list">내 일기</button>
+    <button data-view="year">일 년 요약</button>
+  </nav>
+
+  <section id="today" class="view">
+    <p class="date" id="todayLabel"></p>
+    <h2>오늘의 감정 스티커를 붙여요</h2>
+    <div class="stickers" id="stickers"></div>
+    <label for="sentence">오늘의 한 문장</label>
+    <input id="sentence" maxlength="100" placeholder="오늘은 어땠나요? 한 문장으로 적어요">
+    <button id="save" class="primary">일기 저장</button>
+    <p id="msg" role="status"></p>
+  </section>
+
+  <section id="list" class="view" hidden>
+    <div id="cards"></div>
+  </section>
+
+  <section id="year" class="view" hidden>
+    <div class="yearbar"><button id="prevY">◀</button><strong id="yearLabel"></strong><button id="nextY">▶</button></div>
+    <div id="summary"></div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
