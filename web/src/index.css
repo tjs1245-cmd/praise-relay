@@ -2,10 +2,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #0f131c;
+  --panel: #171c28;
+  --line: #2a3142;
+  --red: #c8102e;
+  --red-bright: #e0243f;
+  --gray: #6b7280;
+  --text: #f3f4f6;
+  --muted: #9aa3b2;
+}
+
 body {
   margin: 0;
   font-family: 'Arial Rounded MT Bold', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
-  color: #2b2926;
-  background: #fffcf8;
+  color: var(--text);
+  background: var(--bg);
   line-height: 1.65;
 }
